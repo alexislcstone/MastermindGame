@@ -1,0 +1,13 @@
+.submit-button {
+  background-color: #4CAF50;
+  /* Green */
+  border: none;
+  color: white;
+  padding: 15px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius:10px;
+  font-size: 20px;
+  cursor:pointer;
+}

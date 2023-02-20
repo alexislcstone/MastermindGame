@@ -22,11 +22,21 @@ const Users = mongoose.model('Users', userSchema);
 //         enum : ['EASY','NORMAL','HARD'],
 //         default: 'NORMAL'
 //   },
+//   complete: {type: Boolean, default: false},
 //   userId: Number
 // });
 
 // const Games = mongoose.model('Games', gameSchema);
 
+// const guessSchema = new Schema({
+//   guessArr: Array,
+//   date: { type: Date, default: Date.now },
+//   numCorrectLocation: Number,
+//   numCorrectGuesses:Number,
+//   gameId: Number
+// });
+
+// const Guesses = mongoose.model('Guesses', guessSchema);
 module.exports = {
   Users,
 }
