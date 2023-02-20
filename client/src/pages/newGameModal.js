@@ -2,6 +2,7 @@ import NewGameButton from '../components/newGameButton.js';
 import ResumeGameButton from '../components/resumeGameButton.js';
 import {useEffect,useState} from 'react';
 import api from '../API';
+import './home.css';
 
 export default function NewGameModal({setCurrGame,setPage}){
   const [canResume,setCanResume] = useState()
@@ -13,15 +14,13 @@ export default function NewGameModal({setCurrGame,setPage}){
     fetchData();
   }, [])
   return(
-    <div>
+    <div className="home-container">
       <div>
-        Would you like to start a new game?
-        <div>
+        <h1>Would you like to start a new game?</h1>
+        <div style={{display:'flex',justifyContent:'space-around'}}>
           <NewGameButton setPage={setPage} setCurrGame={setCurrGame}/>
-          {canResume}
           {canResume?<ResumeGameButton setPage={setPage} setCurrGame={setCurrGame}/>:null}
         </div>
-        {/* if there is a recent game unfinished, ask to resume old game. */}
       </div>
     </div>
   )

@@ -4,11 +4,13 @@ import {useState,useEffect} from 'react';
 export default function SelectionIcon({color,currGuessIndex,setCurrGuessIndex,id,setGuessArr,guessArr,input}){
 
   function handleClick(e){
-    const clickedIndex = e.target.id
-    let tempGuessArr = guessArr;
-    tempGuessArr[currGuessIndex]=Number(clickedIndex);
-    setGuessArr(tempGuessArr)
-    setCurrGuessIndex(currGuessIndex+1)
+    if(currGuessIndex<4){
+      const clickedIndex = e.target.id
+      let tempGuessArr = guessArr;
+      tempGuessArr[currGuessIndex]=Number(clickedIndex);
+      setGuessArr(tempGuessArr)
+      setCurrGuessIndex(currGuessIndex+1)
+    }
   }
   return(
     <div>
@@ -20,10 +22,6 @@ export default function SelectionIcon({color,currGuessIndex,setCurrGuessIndex,id
         onClick={handleClick}
         ></div>
       }
-      {/* <div id={id} style={{backgroundColor:`${color}`}}
-        className = 'selection-icon'
-        onClick={handleClick}
-        ></div> */}
     </div>
   )
 }
