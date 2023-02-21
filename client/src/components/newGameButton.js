@@ -3,9 +3,9 @@ import './newGameButton.css';
 //this function creates a new Game in the games table
 export default function NewGameButton({setPage,setCurrGame}){
   const handleClick=async()=>{
-    const data = await api.createNewGame()
-        console.log(data.data[0])
-
+    let answerSequence = await api.getNewAnswerSequence();
+    const answerArr = answerSequence.data.split('\n').slice(0,4);
+    const data = await api.createNewGame({answerSequence:answerArr})
     setCurrGame(data.data[0])
     setPage('HOME')
   }

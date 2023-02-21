@@ -4,7 +4,6 @@ import './newGameButton.css';
 export default function ResumeGameButton({setPage,setCurrGame}){
   const handleClick=async()=>{
     const data = await api.getGame()
-    console.log(data.data[0])
     setCurrGame(data.data[0])
     setPage('HOME')
   }

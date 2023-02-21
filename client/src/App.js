@@ -3,8 +3,8 @@ import Home from './pages/home.js';
 import NewGameModal from './pages/newGameModal.js';
 import {useState} from 'react';
 function App() {
-  const [currGame, setCurrGame]=useState({})
-  const [page,setPage]=useState('NEW GAME')
+  const [currGame, setCurrGame]=useState({});
+  const [page,setPage]=useState('NEW GAME');
 
   function renderView(){
     switch(page){
