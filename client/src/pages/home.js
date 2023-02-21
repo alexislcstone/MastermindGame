@@ -17,11 +17,11 @@ export default function Home({currGame}){
   useEffect(() => {
     async function fetchData() {
       const data = await api.getGuesses({gameId:currGame._id});
-      setPastGuesses(data.data?.guessesList);
       console.log(data.data);
+      setPastGuesses(data.data);
     }
     fetchData();
-  }, [])
+  }, [currGuessIndex])
   return(
     <div className = 'home-container'>
       <h1>Make Your Guess -username-</h1>

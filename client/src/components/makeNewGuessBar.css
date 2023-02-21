@@ -1,9 +1,9 @@
 .guess-bar{
   display:flex;
   flex-direction: row;
-  border:1px solid black;
   padding:20px;
-  border-radius: 5%;
+  align-items: center;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.241);
 }
 .guess-icons{
   display:flex;

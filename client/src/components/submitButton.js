@@ -1,11 +1,12 @@
 import './submitButton.css'
+import api from '../API';
 
 export default function SubmitButton({guessArr,setGuessArr,setCurrGuessIndex,currGame}){
   //need to work on the onSubmit logic here
     //check if any numbers are in original sequence
     //check if the correct numbers' locations are correct
     //make a post request to guesses table
-  function handleClick(){
+  const handleClick=async()=>{
     let answer = currGame.answerSequence;
     let numCorrect = 0; // number of numbers correct
     let posCorrect = 0; // number of positions correct
@@ -13,16 +14,29 @@ export default function SubmitButton({guessArr,setGuessArr,setCurrGuessIndex,cur
     posCorrect = numCorrectPositions(answer)
     numCorrect = numCorrectNumbers(answer)
     console.log(`${numCorrect} correct numbers, ${posCorrect} correct positions`)
-    // how make a post request to guesses to create a new guess
 
-    //reset everything to default
+    // now make a post request to guesses to create a new guess
+    const obj = {
+      guessesList:guessArr,
+      numCorrectPosition:posCorrect,
+      numCorrectGuesses:numCorrect,
+      gameId:currGame._id,
+    }
+    await api.createGuess(obj)
+    let g = await api.getGuesses({gameId:currGame._id})
+    console.log('ANSWERRRR',answer)
+    //=================reset everything to default====================
+    //set all guesses to -1s again
+    setGuessArr((prev)=>prev.map(guess=>-1))
+    //set currGuess index to 0
+    setCurrGuessIndex((prev)=>0)
   }
 
   //this function loops through the guess array and check how many positions match the answer array
   function numCorrectPositions(answer){
     let posCorrect = 0
     for(let i=0; i<answer.length; i++){
-      if(guessArr[i]===Number(answer[i])){
+      if(guessArr[i]==answer[i]){
           posCorrect++;
       }
     }
