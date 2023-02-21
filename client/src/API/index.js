@@ -9,6 +9,7 @@ let api = {
       })
       .catch(err => console.log(err))
   },
+
   getGame: function (obj) {
     return axios.get('/game', { params: obj })
       .then(data => {
@@ -21,6 +22,12 @@ let api = {
       .then(data => this.getGame())
       .catch(err => console.log(err))
   },
+  updateGame: function (obj) {
+    return axios.put('/game', obj)
+      .then(data => this.getGame())
+      .catch(err => console.log(err))
+  },
+
   //gets list of guesses based on the currGame id
   getGuesses: function(obj) {
     return axios.get('/guess?', { params: obj })
@@ -31,7 +38,7 @@ let api = {
   },
   createGuess: function (obj) {
     return axios.post('/guess', obj)
-      .then(data => this.getGame())
+      .then(data => this.getGuesses({gameId:obj.gameId}))
       .catch(err => console.log(err))
   },
   // editEntry: function (obj) {
