@@ -11,7 +11,7 @@ function App() {
       case "NEW GAME":
         return <NewGameModal setCurrGame={setCurrGame} setPage={setPage}/>;
       case "HOME":
-        return <Home currGame={currGame}/>;
+        return <Home currGame={currGame} setCurrGame={setCurrGame} setPage={setPage}/>;
       default:
         return <NewGameModal setCurrGame={setCurrGame} setPage={setPage}/>;
     }

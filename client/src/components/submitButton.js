@@ -1,7 +1,7 @@
 import './submitButton.css'
 import api from '../API';
 
-export default function SubmitButton({guessArr,setGuessArr,setCurrGuessIndex,currGame}){
+export default function SubmitButton({setResultView,setGameEnded,guessArr,setGuessArr,setCurrGuessIndex,currGame}){
 
   const handleClick=async()=>{
     let answer = currGame.answerSequence;
@@ -26,7 +26,6 @@ export default function SubmitButton({guessArr,setGuessArr,setCurrGuessIndex,cur
     //set currGuess index to 0
     setCurrGuessIndex((prev)=>0)
 
-
     let numOfGuesses = guessList.data.length;
     //if posCorrect==4 AND numCorrect===4, update the current Game's score and date WON and complete status to true
     if(posCorrect==4 && numCorrect==4 && numOfGuesses<=10 ){
@@ -38,6 +37,8 @@ export default function SubmitButton({guessArr,setGuessArr,setCurrGuessIndex,cur
         gameId:currGame._id
       }
       await api.updateGame(winObj);
+      setResultView('WIN');
+      setGameEnded(true);
     }else if(numOfGuesses>=10){
       //if number of guesses=10, date LOST and complete status to true, current points are still 0 since you lost
       const loseObj = {
@@ -47,6 +48,9 @@ export default function SubmitButton({guessArr,setGuessArr,setCurrGuessIndex,cur
         gameId:currGame._id
       }
       await api.updateGame(loseObj);
+      setResultView('LOSE');
+      console.log('HIT LOST');
+      setGameEnded(true);
     }else{
       const guessObj = {
         numOfGuesses,
@@ -101,8 +105,20 @@ export default function SubmitButton({guessArr,setGuessArr,setCurrGuessIndex,cur
     <div>
       {
         guessArr[guessArr.length-1]>=0?
-        <input onClick={handleClick} type='button' className='submit-button' value='Submit Button'/>
-        : <input style={{backgroundColor:'grey'}} type='button' className='submit-button' value='Submit Button' disable/>
+        <input
+        onClick={handleClick}
+        type='button'
+        className='submit-button'
+        value='Submit Button'
+        />
+        :
+        <input
+        style={{backgroundColor:'grey'}}
+        type='button'
+        className='submit-button'
+        value='Submit Button'
+        disable
+        />
       }
     </div>
   )

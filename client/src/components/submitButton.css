@@ -11,3 +11,15 @@
   font-size: 20px;
   cursor:pointer;
 }
+
+.results-modal-container{
+  position: absolute;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.425);
+  top:0;
+  left:0;
+  min-height:100vh;
+  min-height: 160vh;
+  width:100vw;
+  overflow: hidden;
+}
