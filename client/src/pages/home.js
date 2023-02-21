@@ -9,14 +9,14 @@ import NewGameButton from '../components/newGameButton.js';
 import WinLoseComponent from '../components/winLoseComponent.js';
 
 export default function Home({currGame,setCurrGame,setPage}){
-  const colorList = ['red','orange','yellow','green','blue','indigo','purple','black','pink']
+  const colorList = ['red','orange','yellow','green','blue','indigo','purple','black','pink','lime']
   const [guessArr,setGuessArr]=useState([-1,-1,-1,-1])
   const [currGuessIndex, setCurrGuessIndex]=useState(0)
   const [gameEnded,setGameEnded] = useState(false)
   //array of past guesses objects
   const [pastGuesses,setPastGuesses] = useState([])
   const [resultView, setResultView] = useState('');
-  //get the list of guess for this game with the gameId
+
   useEffect(() => {
     async function fetchData() {
       const data = await api.getGuesses({gameId:currGame._id});
@@ -24,6 +24,8 @@ export default function Home({currGame,setCurrGame,setPage}){
     }
     fetchData();
   }, [pastGuesses,currGame,resultView])
+
+
   return(
     <div className = 'home-container'>
       <h1>Make Your Guess!</h1>
@@ -46,6 +48,7 @@ export default function Home({currGame,setCurrGame,setPage}){
        guessArr={guessArr}
        currGuessIndex={currGuessIndex}
        setCurrGuessIndex={setCurrGuessIndex}
+       level={currGame.level}
        />:null
       }
        {

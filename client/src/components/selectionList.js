@@ -1,11 +1,15 @@
 import SelectionIcon from './selectionIcon.js';
 import './selectionList.css'
-export default function SelectionList({setGuessArr,guessArr,currGuessIndex,setCurrGuessIndex,colorList}){
-
+export default function SelectionList({level,setGuessArr,guessArr,currGuessIndex,setCurrGuessIndex,colorList}){
+  const levelObj={
+      'EASY':4,
+      'NORMAL':7,
+      'HARD':9
+  }
   return(
     <div className='selection-list'>
       {
-        colorList.slice(0,8).map((icon,key)=>
+        colorList.slice(0,levelObj[level]+1).map((icon,key)=>
         <SelectionIcon
         setGuessArr={setGuessArr}
         guessArr={guessArr}

@@ -10,9 +10,36 @@
   border-radius: 10px;
   font-size: 20px;
   cursor: pointer;
-  width:200px;
+  width:300px;
   height:80px;
 }
+
 .new-game-button:hover{
   box-shadow:3px 3px 10px rgba(0, 0, 0, 0.647);
+}
+
+.levels-menu-container{
+  margin-top: 0.5em;
+  display:flex;
+  flex-direction: column;
+  gap:0.5em;
+  /* justify-content: space-between; */
+}
+
+.new-game-menu-button{
+  background-color: #9fdaa1;
+    /* Green */
+    border: none;
+    color: white;
+    padding: 10px 30px;
+    /* display: inline-block; */
+
+    border-radius: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    width: 80%;
+    height: 30px;
+}
+.new-game-menu-button:hover{
+  background-color: #4CAF50;
 }
