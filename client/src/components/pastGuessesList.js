@@ -17,7 +17,6 @@ export default function PastGuessesList({colorList,pastGuesses}){
   }
   return(
     <div>
-      past guesses list
       {
         pastGuesses?.map((guess,key)=>
         (<div className='guess-icons guess-bar'>

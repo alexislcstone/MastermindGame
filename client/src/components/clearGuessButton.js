@@ -7,7 +7,7 @@ export default function ClearGuessButton({ setGuessArr, setCurrGuessIndex}){
   }
   return(
     <div className='clear-guess-button'>
-      <div onClick={handleClick}>
+      <div style={{color:'grey',cursor:'pointer'}} onClick={handleClick}>
         Clear Guess
       </div>
     </div>

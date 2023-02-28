@@ -2,7 +2,7 @@ import api from '../API';
 import './newGameButton.css';
 import {useState} from 'react';
 //this function creates a new Game in the games table
-export default function NewGameButton({setResultView,setGameEnded,setPage,setCurrGame}){
+export default function NewGameButton({currUser,setResultView,setGameEnded,setPage,setCurrGame}){
   let [toggleDifficulty, setToggleDifficulty] = useState(false)
 
   const openMenu = () => {
@@ -19,9 +19,12 @@ export default function NewGameButton({setResultView,setGameEnded,setPage,setCur
     const answerArr = answerSequence.data.split('\n').slice(0,4);
     let newGameObj = {
       answerSequence:answerArr,
-      level:difficultyLevel
+      level:difficultyLevel,
+      userId:currUser._id
     }
+
     const data = await api.createNewGame(newGameObj)
+
     setCurrGame(data.data[0])
     setPage('HOME')
     setGameEnded(false)

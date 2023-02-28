@@ -1,7 +1,7 @@
 import './submitButton.css'
 import api from '../API';
 
-export default function SubmitButton({setResultView,setGameEnded,guessArr,setGuessArr,setCurrGuessIndex,currGame}){
+export default function SubmitButton({currUser,setCurrUser,setResultView,setGameEnded,guessArr,setGuessArr,setCurrGuessIndex,currGame}){
 
   const handleClick=async()=>{
     let answer = currGame.answerSequence;
@@ -28,15 +28,28 @@ export default function SubmitButton({setResultView,setGameEnded,guessArr,setGue
 
     let numOfGuesses = guessList.data.length;
     //if posCorrect==4 AND numCorrect===4, update the current Game's score and date WON and complete status to true
-    if(posCorrect==4 && numCorrect==4 && numOfGuesses<=10 ){
+    if(posCorrect===4 && numCorrect===4 && numOfGuesses<=10 ){
+      const levelObj={
+        'EASY':1,
+        'NORMAL':2,
+        'HARD':3
+      }
       const winObj = {
         date:new Date(),
         complete:true,
-        gameScore:10-numOfGuesses+1,
+        gameScore:(10-numOfGuesses+1)*levelObj[currGame.level],
         numOfGuesses,
         gameId:currGame._id
       }
       await api.updateGame(winObj);
+      const totalScore = currUser.totalScore+winObj.gameScore;
+            console.log(totalScore)
+
+      await api.updateUser({totalScore:totalScore,userId:currUser._id,userName:currUser.userName})
+      let currUserTemp=currUser;
+      currUserTemp.totalScore = totalScore;
+
+      setCurrUser(currUserTemp);
       setResultView('WIN');
       setGameEnded(true);
     }else if(numOfGuesses>=10){
@@ -49,7 +62,6 @@ export default function SubmitButton({setResultView,setGameEnded,guessArr,setGue
       }
       await api.updateGame(loseObj);
       setResultView('LOSE');
-      console.log('HIT LOST');
       setGameEnded(true);
     }else{
       const guessObj = {
@@ -116,7 +128,7 @@ export default function SubmitButton({setResultView,setGameEnded,guessArr,setGue
         style={{backgroundColor:'grey'}}
         type='button'
         className='submit-button'
-        value='Submit Button'
+        value='Submit Guess'
         disable
         />
       }

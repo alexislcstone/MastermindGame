@@ -1,0 +1,31 @@
+.global-h1{
+  /* color: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C); */
+}
+.global-games-list {
+  display: flex;
+  justify-content: space-between;
+  gap: 7em;
+  padding: 15px 25px;
+  margin-bottom: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.361);
+}
+.global-games-item{
+  display: flex;
+  justify-content: space-between;
+  gap:6em;
+  padding:25px 30px;
+  border-radius: 20px;
+  /* margin-bottom:20px; */
+  /* box-shadow: 0px 0px 10px black; */
+  background-color: rgb(224, 250, 215);
+  margin-bottom: 10px;
+}
+
+.topbar{
+  font-size: 18px;
+  font-weight:bold;
+}
+
+.global-games-column{
+  width:100px;
+}

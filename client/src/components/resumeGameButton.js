@@ -1,9 +1,9 @@
 import api from '../API';
 import './newGameButton.css';
 //this function resumes to a previous game if its not finished
-export default function ResumeGameButton({setPage,setCurrGame}){
+export default function ResumeGameButton({currUser,setPage,setCurrGame}){
   const handleClick=async()=>{
-    const data = await api.getGame()
+    const data = await api.getGame({userId:currUser._id})
     setCurrGame(data.data[0])
     setPage('HOME')
   }

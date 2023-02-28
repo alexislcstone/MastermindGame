@@ -6,7 +6,7 @@ import ClearGuessButton from './clearGuessButton.js'
 
 import './makeNewGuessBar.css';
 
-export default function MakeNewGuessBar({resultView,setResultView,setGameEnded,setGuessArr,guessArr,colorList,setCurrGuessIndex,currGame}){
+export default function MakeNewGuessBar({currUser,setCurrUser,resultView,setResultView,setGameEnded,setGuessArr,guessArr,colorList,setCurrGuessIndex,currGame}){
 
   return(
     <div className='guess-bar'>
@@ -21,6 +21,8 @@ export default function MakeNewGuessBar({resultView,setResultView,setGameEnded,s
       setCurrGuessIndex={setCurrGuessIndex}
       />
       <SubmitButton
+      currUser={currUser}
+      setCurrUser={setCurrUser}
       resultView={resultView}
       setResultView={setResultView}
       guessArr={guessArr}

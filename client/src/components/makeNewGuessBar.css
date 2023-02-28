@@ -4,6 +4,7 @@
   padding:20px;
   align-items: center;
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.241);
+  gap:1rem;
 }
 .guess-icons{
   display:flex;

@@ -8,8 +8,8 @@ import api from '../API';
 import NewGameButton from '../components/newGameButton.js';
 import WinLoseComponent from '../components/winLoseComponent.js';
 
-export default function Home({currGame,setCurrGame,setPage}){
-  const colorList = ['red','orange','yellow','green','blue','indigo','purple','black','pink','lime']
+export default function Home({setCurrUser,currUser,currGame,setCurrGame,setPage}){
+  const colorList = ['red','orange','yellow','green','blue','indigo','#c934eb','black','pink','lime']
   const [guessArr,setGuessArr]=useState([-1,-1,-1,-1])
   const [currGuessIndex, setCurrGuessIndex]=useState(0)
   const [gameEnded,setGameEnded] = useState(false)
@@ -23,17 +23,19 @@ export default function Home({currGame,setCurrGame,setPage}){
       setPastGuesses(data.data);
     }
     fetchData();
-  }, [pastGuesses,currGame,resultView])
+  }, [pastGuesses,currGame])
 
 
   return(
     <div className = 'home-container'>
+      <div className="backtogame-button" onClick={()=>setPage('PERSONAL SCORE')}>View Scoreboard</div>
       <h1>Make Your Guess!</h1>
       <div>You have {10-pastGuesses.length} guesses left</div>
       {
         gameEnded===false?
         null:
         <NewGameButton
+        currUser={currUser}
         setGameEnded={setGameEnded}
         setPage={setPage}
         setCurrGame={setCurrGame}
@@ -54,6 +56,8 @@ export default function Home({currGame,setCurrGame,setPage}){
        {
        gameEnded===false?
        <MakeNewGuessBar
+       currUser={currUser}
+       setCurrUser={setCurrUser}
        colorList={colorList}
        setGuessArr={setGuessArr}
        guessArr={guessArr}
@@ -72,8 +76,8 @@ export default function Home({currGame,setCurrGame,setPage}){
       null:
       (
         <div className='results-modal-container'>
-          <>{resultView}</>
           <WinLoseComponent
+          currUser={currUser}
           resultView={resultView}
           setResultView={setResultView}
           setCurrGame={setCurrGame}
