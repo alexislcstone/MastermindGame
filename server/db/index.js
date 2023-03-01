@@ -8,35 +8,37 @@ const { Schema } = mongoose;
 
 const userSchema = new Schema({
   userName:String,
-  totalScore:Number,
+  totalScore:{type: Number, default: 0},
   date: { type: Date, default: Date.now },
 });
 
 const Users = mongoose.model('Users', userSchema);
 
-// const gameSchema = new Schema({
-//   gameScore: Number,
-//   date: { type: Date, default: Date.now },
-//   level: {
-//         type: String,
-//         enum : ['EASY','NORMAL','HARD'],
-//         default: 'NORMAL'
-//   },
-//   complete: {type: Boolean, default: false},
-//   userId: Number
-// });
+const gameSchema = new Schema({
+  gameScore: {type: Number, default: 0},
+  date: { type: Date, default: Date.now },
+  level: {
+        type: String,
+        enum : ['EASY','NORMAL','HARD'],
+        default: 'NORMAL'
+  },
+  complete: {type: Boolean, default: false},
+  numOfGuesses:{type: Number, default: 0},
+  answerSequence:Array,
+  userId: String
+});
 
-// const Games = mongoose.model('Games', gameSchema);
+const Games = mongoose.model('Games', gameSchema);
 
-// const guessSchema = new Schema({
-//   guessArr: Array,
-//   date: { type: Date, default: Date.now },
-//   numCorrectLocation: Number,
-//   numCorrectGuesses:Number,
-//   gameId: Number
-// });
+const guessSchema = new Schema({
+  guessesList: Array,
+  date: { type: Date, default: Date.now },
+  numCorrectPosition: Number,
+  numCorrectGuesses:Number,
+  gameId: String,
+});
 
-// const Guesses = mongoose.model('Guesses', guessSchema);
+const Guesses = mongoose.model('Guesses', guessSchema);
 module.exports = {
-  Users,
+  Users,Games,Guesses
 }
