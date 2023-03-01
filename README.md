@@ -6,6 +6,6 @@ Guess the correct sequence!
 - install npm on client and server
   - `cd client`
   - `npm install`
-  - `cd ../server`
+  - `cd server`
   - `npm install`
 - This project uses mongoose. Please install mongoose to your computer if you don't have it.
