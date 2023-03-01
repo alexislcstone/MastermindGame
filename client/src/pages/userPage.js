@@ -55,7 +55,7 @@ export default function UserPage({setCurrUser,setPage,}){
           className='submit-button'
           type='Button'
           value='Create an Account'
-          disable
+          disable='true'
           />
           :<input
           onClick={handleClick}
@@ -73,7 +73,7 @@ export default function UserPage({setCurrUser,setPage,}){
           {
             searchList.map((user,index)=>{
               return(
-                <div onClick={handleUserClick} id={index} className='user-item'>{user.userName}</div>
+                <div onClick={handleUserClick}  key={index} id={index} className='user-item'>{user.userName}</div>
               )
             })
           }

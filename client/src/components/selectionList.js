@@ -15,6 +15,7 @@ export default function SelectionList({level,setGuessArr,guessArr,currGuessIndex
         guessArr={guessArr}
         currGuessIndex={currGuessIndex}
         setCurrGuessIndex={setCurrGuessIndex}
+        key={key}
         id={key}
         color={colorList[key]}
         />)

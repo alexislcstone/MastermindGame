@@ -4,7 +4,7 @@ import {useEffect,useState} from 'react';
 import api from '../API';
 import './home.css';
 
-export default function NewGameModal({currUser,setGamesList,setCurrGame,setPage}){
+export default function NewGamePage({setGameEnded,currUser,setGamesList,setCurrGame,setPage}){
   const [canResume,setCanResume] = useState()
 
   useEffect(() => {
@@ -25,6 +25,7 @@ export default function NewGameModal({currUser,setGamesList,setCurrGame,setPage}
           currUser={currUser}
           setPage={setPage}
           setCurrGame={setCurrGame}
+          setGameEnded={setGameEnded}
           />
           {canResume?<ResumeGameButton currUser={currUser} setPage={setPage} setCurrGame={setCurrGame}/>:null}
         </div>

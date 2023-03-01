@@ -27,8 +27,10 @@ export default function NewGameButton({currUser,setResultView,setGameEnded,setPa
 
     setCurrGame(data.data[0])
     setPage('HOME')
-    setGameEnded(false)
-    setResultView('')
+    if(setGameEnded || setResultView){
+      setGameEnded(false)
+      setResultView('')
+    }
   }
   return(
     <div>

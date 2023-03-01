@@ -1,7 +1,7 @@
 import './App.css';
 import Home from './pages/home.js';
 import UserPage from './pages/userPage.js';
-import NewGameModal from './pages/newGameModal.js';
+import NewGamePage from './pages/newGamePage.js';
 import PersonalScoreBoard from './pages/personalScoreBoard.js'
 
 import {useState} from 'react';
@@ -19,7 +19,7 @@ function App() {
         setCurrUser={setCurrUser}
         />;
       case "NEW GAME":
-        return <NewGameModal
+        return <NewGamePage
         setGamesList={setGamesList}
         setCurrGame={setCurrGame}
         setPage={setPage}
@@ -40,7 +40,7 @@ function App() {
         currUser={currUser}
         />
       default:
-        return <NewGameModal
+        return <NewGamePage
         setCurrGame={setCurrGame}
         setPage={setPage}
         currUser={currUser}
@@ -49,7 +49,6 @@ function App() {
   }
   return (
     <div className="App">
-      {/* get/create the new current game info from the newgamemodal*/}
       {renderView()}
     </div>
   );

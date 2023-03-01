@@ -29,8 +29,9 @@ export default function Home({setCurrUser,currUser,currGame,setCurrGame,setPage}
   return(
     <div className = 'home-container'>
       <div className="backtogame-button" onClick={()=>setPage('PERSONAL SCORE')}>View Scoreboard</div>
-      <h1>Make Your Guess!</h1>
-      <div>You have {10-pastGuesses.length} guesses left</div>
+      <h1>Make Your Guess, {currUser.userName}!</h1>
+      <div style={{marginTop:'-40px',color:'grey',fontSize:'20px'}}>Your total score: {currUser.totalScore}</div>
+      <div style={{color:'red'}}>You have {10-pastGuesses.length} guesses left</div>
       {
         gameEnded===false?
         null:

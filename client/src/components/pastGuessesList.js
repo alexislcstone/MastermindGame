@@ -18,9 +18,9 @@ export default function PastGuessesList({colorList,pastGuesses}){
   return(
     <div>
       {
-        pastGuesses?.map((guess,key)=>
+        pastGuesses?.map((guess,key1)=>
         (<div className='guess-icons guess-bar'>
-          {guess?.guessesList.map((icon,key)=>((<PastGuessItem guess={guess} color={colorList[icon]} input={true} />)))}
+          {guess?.guessesList.map((icon,key)=>((<PastGuessItem key={key} guess={guess} color={colorList[icon]} input={true} />)))}
           {numberDisplay(guess.numCorrectGuesses)}
           {positionDisplay(guess.numCorrectPosition)}
         </div>)

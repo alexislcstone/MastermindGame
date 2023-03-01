@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-// eslint-disable-next-line import/no-anonymous-default-export
 let api = {
   getNewAnswerSequence: function(obj) {
     return axios.get(`https://www.random.org/integers/?num=4&min=0&max=${obj.level}&col=1&base=10&format=plain&rnd=new`)
@@ -9,6 +8,7 @@ let api = {
       })
       .catch(err => console.log(err))
   },
+  //user APIs
   getUsers: function(obj) {
     return axios.get('/user', { params: obj })
       .then(data => {
@@ -29,11 +29,11 @@ let api = {
       .catch(err => console.log(err))
   },
   updateUser: function (obj) {
-    console.log('UPDATE USER,', obj)
     return axios.put('/user', obj)
       .then(data => console.log('success'))
       .catch(err => console.log(err))
   },
+  //game APIs
   getGame: function (obj) {
     return axios.get('/game', { params: obj })
       .then(data => {
@@ -59,7 +59,7 @@ let api = {
       .catch(err => console.log(err))
   },
 
-  //gets list of guesses based on the currGame id
+  //guess API
   getGuesses: function(obj) {
     return axios.get('/guess?', { params: obj })
       .then(data => {

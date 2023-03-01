@@ -7,7 +7,7 @@ export default function SubmitButton({currUser,setCurrUser,setResultView,setGame
     let answer = currGame.answerSequence;
     let numCorrect = 0; // number of numbers correct
     let posCorrect = 0; // number of positions correct
-    console.log('CURRGAME:=====',currGame)
+
     posCorrect = numCorrectPositions(answer)
     numCorrect = numCorrectNumbers(answer)
 
@@ -27,6 +27,7 @@ export default function SubmitButton({currUser,setCurrUser,setResultView,setGame
     setCurrGuessIndex((prev)=>0)
 
     let numOfGuesses = guessList.data.length;
+    //=====================WIN OR LOSE================================
     //if posCorrect==4 AND numCorrect===4, update the current Game's score and date WON and complete status to true
     if(posCorrect===4 && numCorrect===4 && numOfGuesses<=10 ){
       const levelObj={
@@ -43,7 +44,6 @@ export default function SubmitButton({currUser,setCurrUser,setResultView,setGame
       }
       await api.updateGame(winObj);
       const totalScore = currUser.totalScore+winObj.gameScore;
-            console.log(totalScore)
 
       await api.updateUser({totalScore:totalScore,userId:currUser._id,userName:currUser.userName})
       let currUserTemp=currUser;
@@ -53,6 +53,7 @@ export default function SubmitButton({currUser,setCurrUser,setResultView,setGame
       setResultView('WIN');
       setGameEnded(true);
     }else if(numOfGuesses>=10){
+
       //if number of guesses=10, date LOST and complete status to true, current points are still 0 since you lost
       const loseObj = {
         date:new Date(),
@@ -70,7 +71,6 @@ export default function SubmitButton({currUser,setCurrUser,setResultView,setGame
       }
       await api.updateGame(guessObj)
     }
-
   }
 
   //this function loops through the guess array and check how many positions match the answer array
@@ -129,7 +129,7 @@ export default function SubmitButton({currUser,setCurrUser,setResultView,setGame
         type='button'
         className='submit-button'
         value='Submit Guess'
-        disable
+        disable='true'
         />
       }
     </div>

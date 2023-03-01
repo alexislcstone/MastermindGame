@@ -13,7 +13,7 @@ export default function MakeNewGuessBar({currUser,setCurrUser,resultView,setResu
       <div className='guess-icons'>
         {
         guessArr.map((icon,key)=>
-        (<SelectionIcon color={colorList[icon]} input={true} />)
+        (<SelectionIcon key={key} color={colorList[icon]} input={true} />)
         )}
       </div>
       <ClearGuessButton
