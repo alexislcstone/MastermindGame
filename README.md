@@ -3,11 +3,13 @@
 ## Installation
 
 - `git clone <this_url> && cd <repo_name>`
-- install npm on client and server
+- install npm on client and server. do the cd on 2 separate terminals
   - `cd client`
   - `npm install`
   - `cd server`
   - `npm install`
+ - in your server terminal, run npm start
+ - in your client terminal, run npm start
 - This project uses mongoose. Please install mongoose to your computer if you don't have it.
 ## Application Components Diagram![Screen Shot 2023-02-28 at 12 05 02 PM](https://user-images.githubusercontent.com/97583316/222042276-18d93abb-a6ea-46e6-88a5-bb85ff63545d.png)
 
